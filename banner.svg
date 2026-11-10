@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-label="Revisa Aí: revisão simples, passo a passo">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1D2B4F"/>
+      <stop offset="1" stop-color="#3A2F7A"/>
+    </linearGradient>
+    <linearGradient id="barra" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#B85F06"/><stop offset=".33" stop-color="#0A7F8A"/>
+      <stop offset=".66" stop-color="#6040C0"/><stop offset="1" stop-color="#23834A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="28" fill="url(#fundo)"/>
+  <!-- símbolos flutuando -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-weight="700" fill="#fff" fill-opacity=".16" font-size="86">
+    <text x="90" y="120">%
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -22; 0 0" dur="5s" repeatCount="indefinite"/></text>
+    <text x="300" y="260">x
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -26; 0 0" dur="6s" repeatCount="indefinite"/></text>
+    <text x="930" y="110">½
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -20; 0 0" dur="5.5s" repeatCount="indefinite"/></text>
+    <text x="1060" y="250">Ω
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -24; 0 0" dur="6.5s" repeatCount="indefinite"/></text>
+    <text x="640" y="290">=
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -18; 0 0" dur="4.5s" repeatCount="indefinite"/></text>
+  </g>
+  <!-- título -->
+  <g text-anchor="middle" font-family="'Segoe UI', Roboto, Arial, sans-serif">
+    <text x="600" y="150" font-size="104" font-weight="800" fill="#fff">Revisa Aí 🧮
+      <animate attributeName="opacity" values="0;1" dur="1.2s" fill="freeze"/></text>
+    <text x="600" y="206" font-size="34" font-weight="600" fill="#E9E6FF">Revisão simples, passo a passo
+      <animate attributeName="opacity" values="0;0;1" keyTimes="0;.4;1" dur="2s" fill="freeze"/></text>
+    <text x="600" y="250" font-size="26" font-weight="500" fill="#C9C4F2">Prof. Thiago Fernando · Licenciado em Matemática
+      <animate attributeName="opacity" values="0;0;1" keyTimes="0;.6;1" dur="2.6s" fill="freeze"/></text>
+  </g>
+  <!-- barra das 4 turmas -->
+  <rect x="300" y="282" width="600" height="10" rx="5" fill="url(#barra)">
+    <animate attributeName="width" values="0;600" dur="1.6s" fill="freeze"/>
+  </rect>
+</svg>

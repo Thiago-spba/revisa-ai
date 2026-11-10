@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Revisa Aí – Prof. Thiago Fernando</title>
+<meta name="description" content="Revisa Aí: revisão de Matemática, Robótica e Educação Financeira com o Prof. Thiago Fernando.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%A7%AE%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg:#ECE9E2; --card:#F8F6F1; --ink:#1D2B4F; --muted:#4F5B78; --line:#D3CEC2;
+  --warn:#FFD54A; --warn-ink:#3A2C00;
+  --c:#1D2B4F; --c-soft:#E3E0D8;
+}
+html{scroll-padding-top: env(safe-area-inset-top, 0px);}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-size:18px; line-height:1.5; font-weight:500;
+}
+[data-t="1a"]{--c:#0A7F8A;--c-soft:#D5ECEE}
+[data-t="1b"]{--c:#6040C0;--c-soft:#E5DFF6}
+[data-t="7b"]{--c:#B85F06;--c-soft:#F9E3CB}
+[data-t="8a"]{--c:#23834A;--c-soft:#D8EFE0}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 40px}
+h1,h2,h3,h4{line-height:1.2;margin:0 0 .4em;font-weight:800}
+h1{font-size:1.7rem} h2{font-size:1.35rem} h3{font-size:1.15rem} h4{font-size:1.05rem}
+p{margin:0 0 .7em}
+.hero{padding:6px 2px 14px}
+.hero .who{color:var(--muted);font-weight:700;margin:0}
+.aviso{
+  background:var(--card); border:2px solid var(--c); border-radius:16px;
+  padding:12px 14px; margin:12px 0; font-size:.98rem;
+}
+.aviso b{color:var(--c)}
+.aviso p{margin:0 0 .4em}.aviso p:last-child{margin:0}
+.aviso.home{--c:#1D2B4F}
+.cards{display:grid;gap:14px;margin-top:14px}
+@media(min-width:560px){.cards{grid-template-columns:1fr 1fr}}
+.turma{
+  display:block;text-decoration:none;color:#fff;background:var(--c);
+  border-radius:20px;padding:16px 18px;min-height:150px;
+  transition:transform .15s ease, box-shadow .15s ease;
+  box-shadow:0 3px 0 rgba(0,0,0,.18);
+}
+.turma:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.turma .serie{font-size:2.2rem;font-weight:800;line-height:1}
+.turma .disc{font-size:1.15rem;font-weight:800;margin:6px 0 2px}
+.turma .hor{font-weight:700;opacity:.95}
+.badge{display:inline-block;margin-top:10px;background:rgba(255,255,255,.22);border-radius:99px;padding:3px 12px;font-weight:800;font-size:.9rem}
+:focus-visible{outline:3px solid #1D2B4F;outline-offset:3px}
+.turma:focus-visible{outline-color:#1D2B4F}
+
+.topo{background:var(--c);color:#fff;border-radius:20px;padding:14px 16px;margin-bottom:12px}
+.topo a{color:#fff;font-weight:800;text-decoration:none;display:inline-block;padding:4px 0 8px}
+.topo h1{margin:0;font-size:1.6rem}
+.topo p{margin:2px 0 0;font-weight:700;opacity:.95}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0}
+.tab{
+  font:inherit;font-weight:800;font-size:.85rem;border:2px solid var(--c);color:var(--c);
+  background:var(--card);border-radius:14px;padding:10px 2px;cursor:pointer;min-height:52px;
+}
+.tab[aria-selected="true"]{background:var(--c);color:#fff}
+.panel{animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:12px 0}
+.card.big{border-left:8px solid var(--c)}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;margin:12px 0;text-align:center}
+.fig svg{max-width:100%;height:auto;color:var(--ink)}
+.fig figcaption{font-size:.88rem;color:var(--muted);font-weight:700}
+.term{margin:0 0 12px;padding-bottom:12px;border-bottom:1px dashed var(--line)}
+.term:last-child{border:0;margin:0;padding:0}
+.term h4{color:var(--c);margin-bottom:2px}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1;margin:0 .2em;font-weight:800}
+.fr span:first-child{border-bottom:2px solid currentColor;padding:0 .25em}
+.eq{font-weight:800;font-size:1.1rem;background:var(--c-soft);border-radius:10px;padding:6px 10px;margin:6px 0 0;display:inline-block}
+.btn{
+  font:inherit;font-weight:800;background:var(--c);color:#fff;border:0;border-radius:14px;
+  padding:12px 18px;min-height:50px;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.2)
+}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.btn.ghost{background:var(--card);color:var(--c);border:2px solid var(--c);box-shadow:none}
+.ctrl{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.step{display:none;margin:10px 0;padding:10px 12px;border-radius:12px;background:var(--c-soft);border-left:6px solid var(--c)}
+.step.show{display:block;animation:pop .4s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.step .n{font-weight:800;color:var(--c);font-size:.85rem}
+.step .eq{background:var(--card)}
+.resp{margin-top:10px;background:var(--c);color:#fff;border-radius:12px;padding:10px 14px;font-weight:800;animation:pop .4s ease both}
+.resp[hidden]{display:none}
+.bloco{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--c);border-radius:16px;padding:14px 16px;margin:12px 0}
+.bloco h3{color:var(--c);margin-bottom:6px}
+.bloco ul{margin:0;padding-left:1.2em}
+.bloco li{margin:6px 0}
+.nota{background:var(--c-soft);border-radius:12px;padding:10px 14px;font-weight:700;margin:12px 0}
+.ex .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;font-weight:800;margin-right:8px}
+.ex .nivel{float:right;font-size:.8rem;font-weight:800;color:var(--c);background:var(--c-soft);border-radius:99px;padding:2px 10px}
+.ex .enun{font-weight:700;margin:8px 0}
+.ex ol{margin:6px 0 0;padding-left:1.3em}
+.ex li{margin:3px 0}
+.ex .resp{margin-top:10px;animation:none}
+.vid{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:2px solid var(--c);border-radius:16px;padding:14px 16px;margin:10px 0;font-weight:800}
+.vid span{display:block;color:var(--muted);font-weight:600;font-size:.9rem}
+.lab{display:block;font-weight:800;margin:10px 0 4px}
+.nm{width:100%;font:inherit;font-weight:700;padding:12px 14px;border:2px solid var(--c);border-radius:12px;background:#fff;color:var(--ink);min-height:50px}
+.msg{color:#9B1C1C;font-weight:800;margin:8px 0 0;min-height:1.2em}
+.saida{animation:pop .5s ease both}
+.cert{background:#FFFCF4;border:6px double var(--c);border-radius:8px;padding:22px 14px 18px;margin-top:12px;text-align:center;color:#1D2B4F;position:relative;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.cert::before{content:"";position:absolute;inset:6px;border:2px solid var(--c-soft);border-radius:4px;pointer-events:none}
+.selo{width:72px;height:72px;border-radius:50%;background:var(--c);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px var(--c-soft)}
+.selo svg{width:42px;height:42px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.c-tit{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(1.5rem,7vw,2.1rem);color:var(--c);line-height:1.15;margin:4px 0 10px}
+.c-p{margin:6px 0;font-size:.98rem}
+.c-nome{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:clamp(1.4rem,6.5vw,2rem);border-bottom:2px solid var(--c);display:inline-block;max-width:100%;padding:2px 10px;margin:6px 0 10px;word-break:break-word}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0}
+.chips span{background:var(--c-soft);color:var(--ink);border:1.5px solid var(--c);border-radius:99px;padding:3px 12px;font-weight:800;font-size:.9rem}
+.c-frase{font-family:Georgia,'Times New Roman',serif;font-style:italic;margin:14px 6px;font-size:1.02rem}
+.assin{margin-top:16px;font-size:.92rem}
+.sig{font-family:'Brush Script MT','Segoe Script','Snell Roundhand',cursive;font-size:1.9rem;line-height:1}
+.linha{height:2px;background:var(--ink);width:70%;margin:2px auto 4px}
+.c-data{font-size:.85rem;color:var(--muted);font-weight:700;margin:12px 0 2px}
+.c-aviso{font-size:.78rem;color:var(--muted);margin:0}
+.dica{font-weight:800;margin:10px 0 0;text-align:center}
+.eye{background:none;border:0;color:#8A8F9E;padding:8px;min-width:44px;min-height:44px;border-radius:12px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.eye svg{width:24px;height:24px}
+.eye[aria-expanded="true"]{color:var(--c);background:var(--c-soft)}
+.solbox{margin-top:6px;animation:pop .35s ease both}
+.solbox[hidden]{display:none}
+.rodape{margin-top:22px;padding-top:14px;border-top:2px solid var(--line);text-align:center;color:var(--muted);font-weight:700;font-size:.95rem}
+.rodape b{color:var(--ink)}
+#pop{position:fixed;inset:0;background:rgba(29,43,79,.55);display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));z-index:50}
+#pop[hidden]{display:none}
+.pop-box{background:var(--warn);color:var(--warn-ink);border:4px solid #1D2B4F;border-radius:22px;padding:20px 18px;max-width:440px;width:100%;text-align:center;animation:pop .45s ease both}
+.pop-box .ic{font-size:2.6rem;line-height:1}
+.pop-box h2{font-size:1.5rem;margin:6px 0 8px}
+.pop-box p{font-weight:700}
+.pop-box .btn{background:#1D2B4F;color:#fff;width:100%;margin-top:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="pop" role="dialog" aria-modal="true" aria-labelledby="pop-t" hidden>
+  <div class="pop-box">
+    <div class="ic" aria-hidden="true">⚠️</div>
+    <h2 id="pop-t">Atenção, estudante!</h2>
+    <p>As atividades na plataforma <b>Sala do Futuro</b> são o que vão gerar a <b>nota do bimestre</b>.</p>
+    <p>Faça com atenção para garantir uma boa nota.</p>
+    <button class="btn" id="pop-ok">Entendi</button>
+  </div>
+</div>
+
+<main class="wrap" id="app"></main>
+
+<script>
+const fr=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const yt=q=>"https://www.youtube.com/results?search_query="+encodeURIComponent(q);
+
+/* ---------- Figuras (SVG simples) ---------- */
+const barra=(y,n,rot)=>{let s="";for(let i=0;i<6;i++){s+=`<rect x="${25+i*45}" y="${y}" width="45" height="28" fill="${i<n?'var(--c)':'var(--card)'}" stroke="currentColor" stroke-width="2"/>`}return s+`<text x="25" y="${y+46}" font-size="14" font-weight="800" fill="currentColor">${rot}</text>`};
+const SVG={
+"7b":`<svg viewBox="0 0 320 180" role="img" aria-label="Etiqueta de R$ 200 com 15% de desconto e barra mostrando 85% pago e 15% de desconto">
+<rect x="20" y="12" width="170" height="86" rx="14" fill="var(--c-soft)" stroke="var(--c)" stroke-width="3"/>
+<circle cx="38" cy="55" r="6" fill="var(--card)" stroke="var(--c)" stroke-width="2"/>
+<text x="112" y="50" text-anchor="middle" font-size="26" font-weight="800" fill="currentColor">R$ 200</text>
+<text x="112" y="82" text-anchor="middle" font-size="24" font-weight="800" fill="var(--c)">−15%</text>
+<rect x="20" y="118" width="238" height="30" fill="var(--c)"/>
+<rect x="258" y="118" width="42" height="30" fill="var(--card)" stroke="var(--c)" stroke-width="3"/>
+<text x="139" y="139" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">85% você paga</text>
+<text x="279" y="168" text-anchor="middle" font-size="13" font-weight="800" fill="currentColor">15%</text>
+<text x="279" y="139" text-anchor="middle" font-size="12" font-weight="800" fill="var(--c)">desc.</text></svg>`,
+"1a":`<svg viewBox="0 0 320 180" role="img" aria-label="Circuito com fonte de 5 volts, resistor e LED ligados em um caminho fechado">
+<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M60 40H140"/><path d="M140 40l8-14 12 28 12-28 12 28 12-28 8 14" stroke="var(--c)"/><path d="M204 40H260V68"/>
+<path d="M245 68h30l-15 26z" fill="var(--c-soft)" stroke="var(--c)"/><path d="M245 94h30"/><path d="M260 94V140H60V104"/>
+<path d="M44 104h32"/><path d="M52 86h16"/><path d="M60 86V40"/>
+<path d="M282 66l14-12m-4 0h4v4" stroke="var(--c)"/><path d="M290 80l14-12m-4 0h4v4" stroke="var(--c)"/></g>
+<text x="172" y="18" text-anchor="middle" font-size="14" font-weight="800" fill="var(--c)">Resistor</text>
+<text x="272" y="116" text-anchor="middle" font-size="14" font-weight="800" fill="var(--c)">LED</text>
+<text x="76" y="100" font-size="14" font-weight="800" fill="currentColor">Fonte 5 V</text>
+<text x="160" y="164" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">caminho fechado: a corrente passa</text></svg>`,
+"1b":`<svg viewBox="0 0 320 180" role="img" aria-label="Balança equilibrada com 3x mais 5 de um lado e 20 do outro">
+<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+<path d="M70 52H250"/><path d="M160 52V140"/><path d="M70 52l-45 32M70 52l45 32M250 52l-45 32M250 52l45 32"/><path d="M120 150h80" stroke-width="5"/></g>
+<circle cx="160" cy="52" r="7" fill="var(--c)"/>
+<rect x="20" y="84" width="100" height="38" rx="8" fill="var(--c-soft)" stroke="var(--c)" stroke-width="3"/>
+<rect x="200" y="84" width="100" height="38" rx="8" fill="var(--c-soft)" stroke="var(--c)" stroke-width="3"/>
+<text x="70" y="110" text-anchor="middle" font-size="20" font-weight="800" fill="currentColor">3x + 5</text>
+<text x="250" y="110" text-anchor="middle" font-size="20" font-weight="800" fill="currentColor">20</text>
+<text x="160" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">o que faço de um lado, faço do outro</text></svg>`,
+"8a":`<svg viewBox="0 0 320 180" role="img" aria-label="Três barras divididas em seis partes: um meio, um terço e a soma, cinco sextos">
+${barra(8,3,"1/2 = 3/6")}${barra(66,2,"1/3 = 2/6")}${barra(124,5,"1/2 + 1/3 = 5/6")}</svg>`
+};
+
+/* ---------- Conteúdo das 4 turmas (linguagem simples) ---------- */
+const T={
+"7b":{
+ serie:"7ºB",disc:"Educação Financeira",aulas:"1ª e 2ª aula",hor:"08:00 às 09:40",plat:"Matific",
+ sub:"Porcentagem, desconto e juros",
+ abertura:"Você viu um tênis de R$ 200,00 com “15% de desconto”. Quanto você vai pagar? Vamos descobrir.",
+ fig:"Com 15% de desconto, você paga 85% do preço.",
+ blocos:[
+  ["💡 O que é",[
+   "<b>Porcentagem (%)</b> é uma conta com 100. Dizer 25% é dizer 25 de cada 100.",
+   "<b>Desconto</b> é o que a loja tira do preço.",
+   "<b>À vista</b> é pagar tudo de uma vez. <b>Parcelar</b> é dividir o pagamento em várias parcelas.",
+   "<b>Juros</b> é um dinheiro a mais que você paga quando parcela ou deve. É o preço de usar o dinheiro por um tempo.",
+   "<b>Taxa</b> é quanto de juros se cobra. “4% ao mês” quer dizer R$ 4,00 a cada R$ 100,00, todo mês.",
+   "<b>Juros simples</b> são juros calculados sempre sobre o valor do começo."]],
+  ["🛠️ Como fazer: trocar % por número",[
+   "<b>% em número:</b> divida por 100. É o mesmo que andar a vírgula 2 casas para a esquerda. Ex.: 15% → 0,15. 4% → 0,04. 10% → 0,10.",
+   "<b>Número em %:</b> multiplique por 100 (vírgula 2 casas para a direita). Ex.: 0,25 → 25%."]],
+  ["🛠️ Como fazer: multiplicar com vírgula",[
+   "Ex.: 200 × 0,15",
+   "1) Multiplique sem a vírgula: 200 × 15 = 3000.",
+   "2) Conte as casas depois da vírgula: 0,15 tem 2.",
+   "3) No resultado, ande a vírgula 2 casas para a esquerda: 3000 → 30,00."]],
+  ["🛠️ Como fazer: desconto, preço final e juros",[
+   "<b>Porcentagem de um valor:</b> troque a % por número e multiplique pelo valor. Ex.: 10% de 80 → 0,10 × 80 = 8.",
+   "<b>Preço final</b> = preço − desconto.",
+   "<b>Juros simples</b> = valor × taxa × tempo. A taxa entra como número (4% = 0,04). O tempo usa a mesma medida da taxa: taxa ao mês, tempo em meses.",
+   "<b>Total a pagar</b> = valor + juros."]],
+  ["🛠️ Como fazer: achar o preço antes do desconto",[
+   "Ex.: você pagou R$ 54,00 com 10% de desconto.",
+   "1) Com 10% de desconto, você paga 90% do preço (100% − 10%). 90% = 0,90.",
+   "2) Então: preço × 0,90 = 54. Para achar o preço, divida: 54 ÷ 0,90.",
+   "3) Dividir por 0,90 é igual a dividir por 0,9. Ande a vírgula 1 casa nos dois números: 540 ÷ 9 = 60."]],
+  ["⚠️ Cuidado com este erro",[
+   "15% de R$ 200,00 é o <b>desconto</b> (R$ 30,00), não o preço final. O preço final é R$ 170,00.",
+   "Parcelou? Some todas as parcelas e compare com o preço à vista."]]
+ ],
+ exemplos:[
+  {t:"Exemplo 1: o tênis",enun:"Um tênis custa R$ 200,00 com 15% de desconto. Quanto você paga?",
+   passos:[["Troque 15% por um número: divida por 100 (é andar a vírgula 2 casas para a esquerda).","15 ÷ 100 = 0,15"],["Veja quanto é o desconto: multiplique o preço pelo número. Sem a vírgula, 200 × 15 = 3000. Como 0,15 tem 2 casas depois da vírgula, ande 2 casas no resultado: 3000 → 30,00.","200 × 0,15 = 30"],["Tire o desconto do preço.","200 − 30 = 170"],["Confira: você paga 85% do preço.","200 × 0,85 = 170 ✓"]],
+   resp:"Você paga R$ 170,00."},
+  {t:"Exemplo 2: a dívida",enun:"Uma dívida de R$ 500,00 tem juros simples de 4% ao mês. Se você pagar só depois de 3 meses, quanto paga no total?",
+   passos:[["Separe os dados da conta.","valor = 500 · taxa = 0,04 · tempo = 3 meses"],["Calcule os juros: valor × taxa × tempo.","500 × 0,04 × 3 = 60"],["Some os juros ao valor da dívida.","500 + 60 = 560"],["Confira: 4% de 500 são R$ 20 por mês.","20 × 3 = 60 ✓"]],
+   resp:"Você paga R$ 560,00."}
+ ],
+ ex:[
+  {n:"Fácil",enun:"Um boné custa R$ 80,00 e tem 10% de desconto no Pix. De quanto é o desconto?",sol:["10% = 10 ÷ 100 = 0,10","80 × 0,10 = 8"],resp:"R$ 8,00 de desconto."},
+  {n:"Fácil",enun:"Uma camiseta custa R$ 60,00 e está com 25% de desconto. Qual é o desconto? E o preço final?",sol:["25% = 25 ÷ 100 = 0,25","Desconto: 60 × 0,25 = 15","Preço final: 60 − 15 = 45"],resp:"Desconto de R$ 15,00. Preço final de R$ 45,00."},
+  {n:"Médio",enun:"Um fone custa R$ 150,00. Na loja A tem 20% de desconto. Na loja B tem R$ 25,00 de desconto. Qual loja deixa o fone mais barato?",sol:["Loja A: 20% = 0,20 → 150 × 0,20 = 30 → 150 − 30 = 120","Loja B: 150 − 25 = 125","120 é menor que 125"],resp:"Loja A: R$ 120,00."},
+  {n:"Médio",enun:"Ana pegou R$ 400,00 emprestados com juros simples de 5% ao mês, por 2 meses. Quanto são os juros? Quanto ela paga no total?",sol:["valor = 400 · taxa = 0,05 · tempo = 2","Juros: 400 × 0,05 × 2 = 20 × 2 = 40","Total: 400 + 40 = 440"],resp:"Juros de R$ 40,00. Total de R$ 440,00."},
+  {n:"Desafio",enun:"Um celular custa R$ 240,00 à vista ou 12 parcelas de R$ 25,00. Quanto você paga a mais parcelando? Isso é quantos por cento do preço à vista?",sol:["Total parcelado: 12 × 25 = 300","Paga a mais: 300 − 240 = 60","Porcentagem: 60 ÷ 240 = 0,25 = 25%"],resp:"R$ 60,00 a mais, que é 25% do preço à vista."},
+  {n:"Desafio",enun:"Pedro pagou R$ 54,00 em um jogo com 10% de desconto. Qual era o preço sem desconto?",sol:["Ele pagou 100% − 10% = 90% do preço (0,90)","preço × 0,90 = 54","preço = 54 ÷ 0,90. Ande a vírgula 1 casa nos dois: 540 ÷ 9 = 60","Confira: 60 × 0,90 = 54 ✓"],resp:"R$ 60,00."}
+ ],
+ videos:[["Porcentagem e desconto","porcentagem desconto aula 7 ano"],["Juros simples","juros simples aula"]]
+},
+"1a":{
+ serie:"1ºA",disc:"Robótica",aulas:"3ª e 4ª aula",hor:"09:55 às 11:35",plat:"Academic",
+ sub:"Circuito, resistor e sensor",
+ abertura:"Você liga um LED direto no Arduino (5 V) e ele queima. Por quê? Faltou uma peça que protege o LED: o resistor.",
+ fig:"Um circuito é um caminho fechado: fonte, resistor e LED.",
+ blocos:[
+  ["💡 O que é",[
+   "<b>Arduino</b> é a plaquinha que lê os sensores e controla as peças.",
+   "<b>Fonte</b> é o que dá energia ao circuito: pilha, bateria ou o próprio Arduino.",
+   "<b>Circuito</b> é um caminho fechado: a eletricidade sai da fonte, passa pelas peças e volta.",
+   "<b>LED</b> é uma lampadinha que acende com pouca corrente.",
+   "<b>Corrente (i)</b> é a quantidade de eletricidade que passa. É como a água dentro do cano. Mede-se em ampère (A). Também se usa o miliampère (mA).",
+   "<b>Tensão (U)</b> é a força que empurra. É como a pressão da água. Mede-se em volt (V). O Arduino usa 5 V.",
+   "<b>Resistência (R)</b> é o que atrapalha a passagem. É como um cano estreito. Mede-se em ohm (Ω).",
+   "<b>Resistor</b> é a peça que tem resistência: ele segura a corrente.",
+   "<b>Sensor</b> é a peça que “sente” o ambiente (luz, calor, distância) e avisa o Arduino."]],
+  ["🛠️ Como fazer: trocar mA por A",[
+   "Divida por 1000. É o mesmo que andar a vírgula 3 casas para a esquerda.",
+   "Ex.: 20 mA → 0,020 = 0,02 A. 250 mA → 0,25 A.",
+   "Para voltar de A para mA, multiplique por 1000. Ex.: 0,05 A → 50 mA."]],
+  ["🛠️ Como fazer: qual fórmula usar",[
+   "Pergunte: o que eu quero descobrir?",
+   "Tensão (U) → <b>U = R × i</b>. Resistência (R) → <b>R = U ÷ i</b>. Corrente (i) → <b>i = U ÷ R</b>.",
+   "Dica do triângulo: desenhe um triângulo com U em cima e R e i embaixo. Tape o que você quer achar: o que sobra mostra a conta."]],
+  ["🛠️ Como fazer: dividir com vírgula",[
+   "Ex.: 3 ÷ 0,02",
+   "Ande a vírgula nos dois números, até o de baixo ficar sem vírgula: 0,02 → 2 (2 casas). Então 3 → 300.",
+   "Agora é só dividir: 300 ÷ 2 = 150."]],
+  ["🛠️ Como fazer: o resistor do LED",[
+   "1) Veja quanto de tensão sobra: tensão da fonte − tensão do LED.",
+   "2) Passe a corrente do LED para ampère (mA ÷ 1000).",
+   "3) Divida a tensão que sobrou pela corrente: R = U ÷ i.",
+   "Sem resistor, passa corrente demais e o LED queima. Com resistor, ele acende seguro."]],
+  ["⚠️ Cuidado com este erro",[
+   "Ligar o LED sem resistor.",
+   "Usar mA na conta sem passar para A. Ex.: 20 mA = 0,02 A."]]
+ ],
+ aviso2:"Segurança: use só pilhas ou os 5 V do Arduino. Nunca mexa em tomada.",
+ exemplos:[
+  {t:"Exemplo 1: o resistor do LED",enun:"Fonte de 5 V. O LED usa 2 V e aguenta 20 mA. Qual resistor usar?",
+   passos:[["Veja quanto de tensão sobra para o resistor.","5 − 2 = 3 V"],["Passe mA para A: divida por 1000 (vírgula 3 casas para a esquerda).","20 mA = 0,020 = 0,02 A"],["Divida a tensão pela corrente. Para dividir por 0,02, ande a vírgula 2 casas nos dois números: 3 ÷ 0,02 vira 300 ÷ 2.","R = 300 ÷ 2 = 150 Ω"],["Confira: R × i deve dar 3 V.","150 × 0,02 = 3 V ✓"]],
+   resp:"150 Ω. Na prática, usa-se o de 220 Ω, que é ainda mais seguro."},
+  {t:"Exemplo 2: a corrente no resistor",enun:"Um resistor de 100 Ω está ligado a 5 V. Qual é a corrente?",
+   passos:[["A fórmula é corrente = tensão ÷ resistência.","i = U ÷ R"],["Troque pelos valores.","i = 5 ÷ 100"],["Calcule.","i = 0,05 A"],["Passe para mA: multiplique por 1000.","0,05 A = 50 mA ✓"]],
+   resp:"0,05 A, ou 50 mA."}
+ ],
+ ex:[
+  {n:"Fácil",enun:"Um fio tem corrente de 250 mA. Quantos ampères são?",sol:["1 mA = 0,001 A","250 × 0,001 = 0,25"],resp:"0,25 A."},
+  {n:"Fácil",enun:"Você esqueceu o resistor ao ligar um LED no Arduino (5 V). O que pode acontecer? Por quê?",sol:["Sem o resistor, nada segura a corrente.","Passa corrente demais pelo LED.","O LED esquenta e queima."],resp:"O LED queima, porque nada segura a corrente."},
+  {n:"Médio",enun:"Um resistor de 500 Ω está ligado a 5 V. Qual é a corrente?",sol:["i = U ÷ R","i = 5 ÷ 500 = 0,01 A","0,01 A = 10 mA"],resp:"0,01 A (10 mA)."},
+  {n:"Médio",enun:"Um LED de 3 V é ligado a uma fonte de 9 V e aguenta 0,02 A. Qual resistor usar?",sol:["Tensão que sobra: 9 − 3 = 6 V","R = 6 ÷ 0,02. Ande a vírgula 2 casas nos dois: 600 ÷ 2 = 300","Confira: 300 × 0,02 = 6 V ✓"],resp:"300 Ω."},
+  {n:"Desafio",enun:"Um sensor de luz tem 1 000 Ω no claro e 10 000 Ω no escuro. Ligado direto a 5 V, qual é a corrente em cada caso? Como isso ajuda a acender uma luz sozinha?",sol:["Claro: 5 ÷ 1000 = 0,005 A = 5 mA","Escuro: 5 ÷ 10000 = 0,0005 A = 0,5 mA","A corrente muda com a luz. O Arduino percebe e decide acender a luz."],resp:"5 mA no claro e 0,5 mA no escuro. O Arduino lê a diferença e liga a luz."},
+  {n:"Desafio",enun:"Fonte de 5 V, LED de 2 V que aguenta no máximo 20 mA. Você tem resistores de 100 Ω, 220 Ω e 1 000 Ω. Qual é o mais seguro? Qual passa do limite?",sol:["Tensão no resistor: 5 − 2 = 3 V","100 Ω: 3 ÷ 100 = 0,03 A = 30 mA, passa do limite","220 Ω: 3 ÷ 220 ≈ 0,0136 A ≈ 13,6 mA, seguro e acende bem","1 000 Ω: 3 ÷ 1000 = 0,003 A = 3 mA, seguro, mas acende fraco"],resp:"O de 100 Ω passa do limite (30 mA). O de 220 Ω é seguro e acende bem."}
+ ],
+ videos:[["Lei de Ohm","lei de ohm aula"],["Resistor e LED com Arduino","resistor led arduino aula"]]
+},
+"1b":{
+ serie:"1ºB",disc:"Orientação de Estudos de Matemática",aulas:"6ª aula",hor:"12:25 às 13:15",plat:"Academic",
+ sub:"Equação do 1º grau",
+ abertura:"Um app de corrida cobra R$ 4,00 para começar mais R$ 2,00 por km. Sua corrida custou R$ 18,00. Quantos km você andou? Uma equação responde isso.",
+ fig:"Equação é como uma balança equilibrada.",
+ blocos:[
+  ["💡 O que é",[
+   "<b>Equação</b> é uma conta com um número escondido. Esse número é uma letra, geralmente o x.",
+   "<b>Resolver</b> a equação é descobrir o valor do x.",
+   "<b>3x</b> quer dizer 3 vezes x.",
+   "<b>Valor fixo</b> é o que não muda, não importa quanto você use.",
+   "Pense numa balança equilibrada: os dois lados valem o mesmo."]],
+  ["🛠️ Como fazer: montar a equação de um problema",[
+   "Ex.: uma corrida cobra R$ 4,00 fixos mais R$ 2,00 por km e custou R$ 18,00.",
+   "1) Veja o que você não sabe e chame de x. Aqui: x = número de km.",
+   "2) Escreva o que o problema diz: 4 (fixo) + 2 vezes x (km) = 18.",
+   "3) Fica: 4 + 2x = 18."]],
+  ["🛠️ Como fazer: resolver",[
+   "O que você faz de um lado, faz do outro.",
+   "Para desfazer um <b>+</b>, use <b>−</b>. Para desfazer um <b>−</b>, use <b>+</b>. Para desfazer um <b>×</b>, use <b>÷</b>.",
+   "1) Tire o número que está somando ou subtraindo, dos dois lados. 2) Divida os dois lados pelo número que multiplica o x."]],
+  ["🛠️ Como fazer: x dos dois lados",[
+   "Ex.: 3x + 2 = x + 12",
+   "1) Junte os x em um lado só: tire x dos dois lados. Fica 2x + 2 = 12.",
+   "2) Depois resolva como de costume: 2x = 10 → x = 5."]],
+  ["🛠️ Como fazer: conferir",[
+   "Troque o x pelo resultado, nos dois lados. Se der o mesmo número, está certo.",
+   "Ex.: x = 5 em 3x + 5 = 20 → 3 × 5 + 5 = 20 ✓."]],
+  ["⚠️ Cuidado com este erro",[
+   "Mexer só em um lado da balança. Se tirou 5 de um lado, tire 5 do outro.",
+   "Não conferir o resultado."]]
+ ],
+ exemplos:[
+  {t:"Exemplo 1: 3x + 5 = 20",enun:"Descubra o x em 3x + 5 = 20.",
+   passos:[["Tire 5 dos dois lados.","3x = 20 − 5 → 3x = 15"],["Divida os dois lados por 3.","x = 15 ÷ 3 → x = 5"],["Confira: troque x por 5.","3 × 5 + 5 = 20 ✓"]],
+   resp:"x = 5."},
+  {t:"Exemplo 2: a corrida",enun:"R$ 4,00 fixos mais R$ 2,00 por km. A corrida custou R$ 18,00. Quantos km?",
+   passos:[["Monte a equação. O x é o número de km.","4 + 2x = 18"],["Tire 4 dos dois lados.","2x = 14"],["Divida os dois lados por 2.","x = 7"],["Confira.","4 + 2 × 7 = 18 ✓"]],
+   resp:"7 km."}
+ ],
+ ex:[
+  {n:"Fácil",enun:"Descubra o x: x + 7 = 15",sol:["Tire 7 dos dois lados","x = 15 − 7 = 8","Confira: 8 + 7 = 15 ✓"],resp:"x = 8."},
+  {n:"Fácil",enun:"Descubra o x: 5x = 40",sol:["Divida os dois lados por 5","x = 40 ÷ 5 = 8","Confira: 5 × 8 = 40 ✓"],resp:"x = 8."},
+  {n:"Médio",enun:"Descubra o x: 2x + 3 = 11",sol:["Tire 3 dos dois lados: 2x = 8","Divida por 2: x = 4","Confira: 2 × 4 + 3 = 11 ✓"],resp:"x = 4."},
+  {n:"Médio",enun:"Descubra o x: 4x − 6 = 18",sol:["Some 6 aos dois lados: 4x = 24","Divida por 4: x = 6","Confira: 4 × 6 − 6 = 18 ✓"],resp:"x = 6."},
+  {n:"Desafio",enun:"Descubra o x: 3x + 2 = x + 12",sol:["Tire x dos dois lados: 2x + 2 = 12","Tire 2 dos dois lados: 2x = 10","Divida por 2: x = 5","Confira: 3 × 5 + 2 = 17 e 5 + 12 = 17 ✓"],resp:"x = 5."},
+  {n:"Desafio",enun:"Lucas pagou R$ 38,00 em um plano de celular com R$ 20,00 fixos mais R$ 3,00 por GB extra. Quantos GB extras ele usou?",sol:["Monte a equação: 20 + 3x = 38","Tire 20 dos dois lados: 3x = 18","Divida por 3: x = 6","Confira: 20 + 3 × 6 = 38 ✓"],resp:"6 GB extras."}
+ ],
+ videos:[["Equação do 1º grau","equação do 1 grau aula"],["Problemas com equação do 1º grau","problemas equação do 1 grau aula"]]
+},
+"8a":{
+ serie:"8ºA",disc:"Orientação de Estudos de Matemática",aulas:"8ª aula",hor:"15:20 às 16:10",plat:"Matific",
+ sub:"Frações e números decimais",
+ abertura:"Você e um amigo dividem uma pizza. Você come "+fr(1,4)+" e ele come "+fr(2,3)+". Quanto os dois comeram juntos? Vamos aprender a fazer essa conta.",
+ fig:"Meio mais um terço dá cinco sextos.",
+ blocos:[
+  ["💡 O que é",[
+   "<b>Fração</b> é uma parte de um inteiro (o inteiro é a coisa toda, como a pizza inteira). Em "+fr(3,4)+", o inteiro foi dividido em 4 partes iguais e pegamos 3.",
+   "O número de baixo (<b>denominador</b>) diz em quantas partes dividimos. O de cima (<b>numerador</b>) diz quantas partes pegamos.",
+   "<b>Número decimal</b> é o número com vírgula, como 0,75.",
+   "<b>Frações equivalentes</b> têm números diferentes, mas valem a mesma quantidade. Ex.: "+fr(1,2)+" e "+fr(2,4)+" (meia pizza é o mesmo que 2 de 4 fatias).",
+   "<b>MMC</b> é o menor número (maior que zero) que aparece na tabuada dos dois números.",
+   "<b>Simplificar</b> é escrever a fração com números menores, sem mudar o valor."]],
+  ["🛠️ Como fazer: achar o MMC",[
+   "Ex.: MMC de 4 e 6",
+   "1) Escreva a tabuada de cada um: do 4 → 4, 8, 12, 16… Do 6 → 6, 12, 18…",
+   "2) Procure o primeiro número que aparece nas duas listas: 12.",
+   "3) O MMC de 4 e 6 é 12."]],
+  ["🛠️ Como fazer: deixar as frações com o mesmo denominador",[
+   "Ex.: "+fr(1,4)+" e "+fr(2,3)+". O MMC de 4 e 3 é 12.",
+   "1) Veja por quanto multiplicar o de baixo para chegar em 12: 4 × 3 = 12.",
+   "2) Multiplique o de cima pelo mesmo número: 1 × 3 = 3. Fica "+fr(3,12)+".",
+   "3) Faça igual com a outra: 3 × 4 = 12 e 2 × 4 = 8. Fica "+fr(8,12)+"."]],
+  ["🛠️ Como fazer: somar e comparar",[
+   "<b>Somar:</b> com o mesmo denominador, some os de cima e mantenha o de baixo. "+fr(3,12)+" + "+fr(8,12)+" = "+fr(11,12)+".",
+   "<b>Comparar:</b> com o mesmo denominador, a de maior numerador é a maior."]],
+  ["🛠️ Como fazer: simplificar",[
+   "Divida em cima e embaixo pelo mesmo número.",
+   "Ex.: "+fr(6,10)+" → divida por 2 → "+fr(3,5)+".",
+   "Se ainda der para dividir, divida de novo."]],
+  ["🛠️ Como fazer: decimal em fração",[
+   "Conte as casas depois da vírgula. 1 casa: embaixo vai 10. 2 casas: embaixo vai 100.",
+   "Ex.: 0,6 = "+fr(6,10)+" = "+fr(3,5)+". Ex.: 0,75 = "+fr(75,100)+" = "+fr(3,4)+" (dividindo por 25)."]],
+  ["🛠️ Como fazer: fração em decimal (dividir)",[
+   "Divida o de cima pelo de baixo. Ex.: 3 ÷ 4",
+   "1) 4 não cabe em 3: escreva 0, e junte um zero ao 3: 30 ÷ 4 = 7, sobram 2.",
+   "2) Junte outro zero: 20 ÷ 4 = 5. Resultado: 0,75."]],
+  ["⚠️ Cuidado com este erro",[
+   "Somar em cima com em cima e embaixo com embaixo. "+fr(1,2)+" + "+fr(1,3)+" <b>não</b> é "+fr(2,5)+". O certo é "+fr(5,6)+"."]]
+ ],
+ exemplos:[
+  {t:"Exemplo 1: fração em decimal",enun:"Escreva "+fr(3,4)+" como número decimal.",
+   passos:[["Fração é uma divisão: o de cima dividido pelo de baixo.","3 ÷ 4"],["4 não cabe em 3. Escreva 0, e junte um zero: 30 ÷ 4 = 7 e sobram 2.","0,7"],["Junte outro zero: 20 ÷ 4 = 5 e não sobra nada.","0,75"],["Confira: decimal × denominador dá o numerador.","0,75 × 4 = 3 ✓"]],
+   resp:"3/4 = 0,75."},
+  {t:"Exemplo 2: somar frações",enun:"Calcule "+fr(1,2)+" + "+fr(1,3)+".",
+   passos:[["Ache o MMC de 2 e 3.","MMC = 6"],["Deixe as duas com denominador 6: multiplique em cima e embaixo pelo mesmo número (2 × 3 = 6 e 3 × 2 = 6).","1/2 = 3/6 e 1/3 = 2/6"],["Some os de cima e mantenha o de baixo.","3/6 + 2/6 = 5/6"],["Confira em decimal: 0,5 + 0,333… = 0,833…","5/6 = 0,833… ✓"]],
+   resp:"1/2 + 1/3 = 5/6."}
+ ],
+ ex:[
+  {n:"Fácil",enun:"Escreva "+fr(1,4)+" como número decimal.",sol:["1 ÷ 4 = 0,25","Confira: 0,25 × 4 = 1 ✓"],resp:"0,25."},
+  {n:"Fácil",enun:"Escreva 0,6 como fração e simplifique.",sol:["0,6 são 6 décimos: "+fr(6,10),"Divida em cima e embaixo por 2: "+fr(3,5)],resp:"3/5."},
+  {n:"Médio",enun:"Qual é maior: "+fr(2,3)+" ou "+fr(3,4)+"?",sol:["MMC de 3 e 4 = 12","2/3 = 8/12 e 3/4 = 9/12","9/12 é maior que 8/12","Confira: 0,666… e 0,75 ✓"],resp:"3/4 é maior."},
+  {n:"Médio",enun:"Calcule "+fr(3,5)+" + "+fr(1,10)+".",sol:["MMC de 5 e 10 = 10","3/5 = 6/10","6/10 + 1/10 = 7/10","Em decimal: 0,7"],resp:"7/10 (0,7)."},
+  {n:"Desafio",enun:"Rita comeu "+fr(1,4)+" de uma pizza e Davi comeu "+fr(2,3)+". Quanto os dois comeram juntos? Quanto sobrou?",sol:["MMC de 4 e 3 = 12","1/4 = 3/12 e 2/3 = 8/12","Juntos: 3/12 + 8/12 = 11/12","Sobrou: 12/12 − 11/12 = 1/12"],resp:"Comeram 11/12 da pizza. Sobrou 1/12."},
+  {n:"Desafio",enun:"Um litro de suco custa R$ 7,50. Maria comprou "+fr(3,5)+" de litro. Quanto ela pagou?",sol:["1/5 do litro: 7,50 ÷ 5 = 1,50","3/5 do litro: 3 × 1,50 = 4,50","Confira: 3/5 = 0,6 e 7,50 × 0,6 = 4,50 ✓"],resp:"R$ 4,50."}
+ ],
+ videos:[["Fração para decimal","fração para decimal aula"],["Soma de frações com MMC","soma de frações mmc aula"]]
+}
+};
+const ORDEM=["7b","1a","1b","8a"];
+
+/* ---------- Certificado (cada turma tem o seu) ---------- */
+const CERT={
+"7b":{assuntos:["Porcentagem","Desconto","Juros simples"],frase:"Quem entende de dinheiro faz escolhas melhores. Você deu um passo importante!",
+ icone:'<circle cx="15" cy="15" r="6"/><circle cx="33" cy="33" r="6"/><path d="M37 11L11 37"/>'},
+"1a":{assuntos:["Circuito elétrico","Lei de Ohm","Resistor e LED","Sensores"],frase:"Grandes invenções começam com um circuito simples. Continue criando!",
+ icone:'<path d="M27 5L12 27h11l-3 16 16-24H25z"/>'},
+"1b":{assuntos:["Equação do 1º grau","Regra da balança","Problemas do dia a dia"],frase:"Todo problema tem solução. Você descobriu o seu x!",
+ icone:'<path d="M8 13h32M24 13v26M16 39h16M14 13l-6 13h12zM34 13l-6 13h12z"/>'},
+"8a":{assuntos:["Frações e decimais","MMC","Soma e comparação de frações"],frase:"Cada parte importa: juntas, formam um grande resultado. Parabéns!",
+ icone:'<circle cx="24" cy="24" r="17"/><path d="M24 24V7M24 24l14.7 8.5M24 24L9.3 32.5"/>'}
+};
+/* ---------- Certificado em imagem (para baixar) ---------- */
+const COR={"7b":["#B85F06","#F9E3CB"],"1a":["#0A7F8A","#D5ECEE"],"1b":["#6040C0","#E5DFF6"],"8a":["#23834A","#D8EFE0"]};
+const ICOD={
+"7b":"M9 15a6 6 0 1 0 12 0a6 6 0 1 0-12 0M27 33a6 6 0 1 0 12 0a6 6 0 1 0-12 0M37 11L11 37",
+"1a":"M27 5L12 27h11l-3 16 16-24H25z",
+"1b":"M8 13h32M24 13v26M16 39h16M14 13l-6 13h12zM34 13l-6 13h12zM24 13v0",
+"8a":"M7 24a17 17 0 1 0 34 0a17 17 0 1 0-34 0M24 24V7M24 24l14.7 8.5M24 24L9.3 32.5"
+};
+const nomeArquivo=n=>"certificado-"+n.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+".png";
+function desenharCert(id,nome){
+  const t=T[id],c=CERT[id],cor=COR[id][0],soft=COR[id][1];
+  const W=1200,H=1800,cv=document.createElement("canvas");cv.width=W;cv.height=H;
+  const x=cv.getContext("2d");
+  const serif="Georgia,'Times New Roman',serif",sans="Nunito,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif";
+  const ink="#1D2B4F",mut="#4F5B78";
+  const fit=(txt,fam,peso,estilo,ini,max)=>{let sz=ini;for(;sz>24;sz-=2){x.font=`${estilo} ${peso} ${sz}px ${fam}`;if(x.measureText(txt).width<=max)break}return sz};
+  const wrap=(txt,max,lh,yy)=>{let ln="";for(const w of txt.split(" ")){const tt=ln?ln+" "+w:w;if(x.measureText(tt).width>max&&ln){x.fillText(ln,W/2,yy);yy+=lh;ln=w}else ln=tt}x.fillText(ln,W/2,yy);return yy+lh};
+  const rr=(px,py,w,h,r)=>{x.beginPath();x.moveTo(px+r,py);x.arcTo(px+w,py,px+w,py+h,r);x.arcTo(px+w,py+h,px,py+h,r);x.arcTo(px,py+h,px,py,r);x.arcTo(px,py,px+w,py,r);x.closePath()};
+  x.fillStyle="#FFFCF4";x.fillRect(0,0,W,H);
+  x.strokeStyle=cor;x.lineWidth=14;x.strokeRect(36,36,W-72,H-72);
+  x.lineWidth=4;x.strokeRect(66,66,W-132,H-132);
+  x.strokeStyle=soft;x.lineWidth=6;x.strokeRect(84,84,W-168,H-168);
+  x.textAlign="center";x.textBaseline="alphabetic";
+  x.fillStyle=soft;x.beginPath();x.arc(W/2,250,112,0,Math.PI*2);x.fill();
+  x.fillStyle=cor;x.beginPath();x.arc(W/2,250,92,0,Math.PI*2);x.fill();
+  x.save();x.translate(W/2-24*2.4,250-24*2.4);x.scale(2.4,2.4);x.strokeStyle="#fff";x.lineWidth=3;x.lineCap="round";x.lineJoin="round";x.stroke(new Path2D(ICOD[id]));x.restore();
+  let y=470;
+  x.fillStyle=cor;
+  let sz=fit("Certificado de Revisão",serif,700,"normal",84,940);x.font=`700 ${sz}px ${serif}`;x.fillText("Certificado de Revisão",W/2,y);
+  y+=84;x.fillStyle=ink;x.font=`500 40px ${sans}`;x.fillText("Certifico que",W/2,y);
+  y+=120;
+  sz=fit(nome,serif,700,"italic",92,960);x.font=`italic 700 ${sz}px ${serif}`;x.fillStyle=ink;x.fillText(nome,W/2,y);
+  const nw=x.measureText(nome).width;x.strokeStyle=cor;x.lineWidth=5;x.beginPath();x.moveTo(W/2-nw/2-24,y+22);x.lineTo(W/2+nw/2+24,y+22);x.stroke();
+  y+=100;x.fillStyle=ink;x.font=`500 40px ${sans}`;x.fillText("revisou com dedicação os assuntos de",W/2,y);
+  y+=62;x.font=`800 44px ${sans}`;y=wrap(t.disc+", "+t.serie+":",940,56,y);
+  y+=30;
+  x.font=`800 36px ${sans}`;
+  const larg=c.assuntos.map(a=>x.measureText(a).width+64);
+  const linhas=[];let cur=[],soma=0;
+  larg.forEach((w,i)=>{if(cur.length&&soma+w+18>1000){linhas.push(cur);cur=[];soma=0}cur.push(i);soma+=w+(cur.length>1?18:0)});
+  if(cur.length)linhas.push(cur);
+  linhas.forEach(l=>{
+    const tot=l.reduce((a,i)=>a+larg[i],0)+18*(l.length-1);let px=W/2-tot/2;
+    l.forEach(i=>{rr(px,y-44,larg[i],68,34);x.fillStyle=soft;x.fill();x.strokeStyle=cor;x.lineWidth=3;x.stroke();
+      x.fillStyle=ink;x.font=`800 36px ${sans}`;x.fillText(c.assuntos[i],px+larg[i]/2,y);px+=larg[i]+18});
+    y+=92;
+  });
+  y+=30;x.fillStyle=ink;x.font=`italic 500 46px ${serif}`;y=wrap("“"+c.frase+"”",900,66,y);
+  y+=60;
+  x.font=`90px 'Brush Script MT','Segoe Script','Snell Roundhand',cursive`;x.fillStyle=ink;x.fillText("Thiago Fernando",W/2,y);
+  y+=18;x.strokeStyle=ink;x.lineWidth=3;x.beginPath();x.moveTo(W/2-260,y);x.lineTo(W/2+260,y);x.stroke();
+  y+=52;x.font=`800 38px ${sans}`;x.fillText("Prof. Thiago Fernando",W/2,y);
+  y+=48;x.font=`500 34px ${sans}`;x.fillText("Licenciado em Matemática",W/2,y);
+  y+=46;x.fillText("Escola Estadual Moacyr Amaral",W/2,y);
+  y+=76;x.fillStyle=mut;x.font=`700 30px ${sans}`;x.fillText("Aula de 10 de novembro de 2026",W/2,y);
+  y+=44;x.font=`500 26px ${sans}`;x.fillText("Incentivo à aprendizagem. Não substitui a tarefa na Sala do Futuro.",W/2,y);
+  return new Promise(res=>cv.toBlob(res,"image/png"));
+}
+async function pegarDownloads(){
+  return {save:async({filename,data})=>{
+    const u=URL.createObjectURL(data);
+    const a=document.createElement("a");a.href=u;a.download=filename;a.style.display="none";
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(u),8000);
+    return {status:"saved"};
+  }};
+}
+function certCard(id){
+  const t=T[id],c=CERT[id];
+  const box=document.createElement("div");box.className="card big";
+  box.innerHTML=`<h2>🎓 Seu certificado</h2><p>Você chegou ao final! Digite seu nome completo para gerar o seu certificado de revisão.</p><label class="lab" for="nm">Nome completo</label><input id="nm" class="nm" type="text" maxlength="60" autocomplete="off" autocapitalize="words" placeholder="Escreva aqui o seu nome"><div class="ctrl"><button class="btn gen">Gerar certificado</button></div><p class="msg" role="status"></p><div class="saida"></div>`;
+  const inp=box.querySelector(".nm"),msg=box.querySelector(".msg"),saida=box.querySelector(".saida");
+  function gerar(){
+    const nome=inp.value.trim().replace(/\s+/g," ");
+    if(nome.split(" ").length<2||nome.length<5){msg.textContent="Digite seu nome completo (nome e sobrenome).";saida.replaceChildren();return}
+    msg.textContent="";
+    const w=document.createElement("div");
+    w.innerHTML=`<div class="cert"><div class="selo"><svg viewBox="0 0 48 48" aria-hidden="true">${c.icone}</svg></div>
+    <div class="c-tit">Certificado de Revisão</div>
+    <p class="c-p">Certifico que</p>
+    <div class="c-nome"></div>
+    <p class="c-p">revisou com dedicação os assuntos de <b>${t.disc}</b>, ${t.serie}:</p>
+    <div class="chips">${c.assuntos.map(a=>`<span>${a}</span>`).join("")}</div>
+    <p class="c-frase">“${c.frase}”</p>
+    <div class="assin"><div class="sig">Thiago Fernando</div><div class="linha"></div><b>Prof. Thiago Fernando</b><br>Licenciado em Matemática<br>Escola Estadual Moacyr Amaral</div>
+    <p class="c-data">Aula de 10 de novembro de 2026</p>
+    <p class="c-aviso">Incentivo à aprendizagem. Não substitui a tarefa na Sala do Futuro.</p></div>
+    <p class="dica">📸 Tire um print da tela para guardar ou enviar. Você também pode baixar o certificado.</p>`;
+    w.querySelector(".c-nome").textContent=nome;
+    saida.replaceChildren(w);
+    pegarDownloads().then(dl=>{
+      if(!dl)return;
+      const row=document.createElement("div");row.className="ctrl";row.style.justifyContent="center";
+      const b=document.createElement("button");b.className="btn";b.textContent="⬇️ Baixar certificado";
+      const m=document.createElement("p");m.className="dica";m.style.fontWeight="700";
+      b.onclick=async()=>{
+        m.textContent="";
+        try{const blob=await desenharCert(id,nome);const r=await dl.save({filename:nomeArquivo(nome),data:blob});if(r&&r.status==="saved")m.textContent="Certificado salvo!"}
+        catch(e){if(!e||e.code!=="declined")m.textContent="Não foi possível baixar. Tire um print da tela."}
+      };
+      row.appendChild(b);w.appendChild(row);w.appendChild(m);
+    });
+    saida.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+  box.querySelector(".gen").onclick=gerar;
+  inp.addEventListener("keydown",e=>{if(e.key==="Enter")gerar()});
+  return box;
+}
+
+/* ---------- Telas ---------- */
+const app=document.getElementById("app");
+const rodape=()=>`<div class="rodape"><b>Prof. Thiago Fernando</b><br>Licenciado em Matemática<br>Escola Estadual Moacyr Amaral</div>`;
+const avisoTurma=t=>`<div class="aviso"><p>⚠️ Lembre da tarefa na plataforma <b>Sala do Futuro</b>. As atividades lançadas lá geram a <b>nota do bimestre</b>. Faça com atenção.</p><p>📌 Não esqueça do <b>${t.plat}</b>.</p></div>`;
+
+function home(){
+  app.removeAttribute("data-t");
+  document.title="Revisa Aí – Prof. Thiago Fernando";
+  app.innerHTML=`
+  <header class="hero">
+    <h1>Revisa Aí</h1>
+    <p class="who">Aulas remotas</p>
+    <p class="who">Prof. Thiago Fernando, Licenciado em Matemática</p>
+    <p class="who">Escola Estadual Moacyr Amaral</p>
+  </header>
+  <div class="aviso home"><p>⚠️ Lembre da tarefa na plataforma <b>Sala do Futuro</b>. As atividades lançadas lá geram a <b>nota do bimestre</b>. Faça com atenção.</p>
+  <p>📌 Não esqueça do <b>Matific</b> e do <b>Academic</b>.</p></div>
+  <h2>Escolha a sua turma</h2>
+  <p>Todas as aulas ficam abertas. Se quiser, entre também nas outras.</p>
+  <div class="cards">${ORDEM.map(id=>{const t=T[id];return `<a class="turma" data-t="${id}" href="#${id}"><div class="serie">${t.serie}</div><div class="disc">${t.disc}</div><span class="badge">${t.plat}</span></a>`}).join("")}</div>
+  <div class="aviso home" style="margin-top:18px"><p>⚠️ A <b>Sala do Futuro</b> gera a <b>nota do bimestre</b>.</p></div>
+  ${rodape()}`;
+  window.scrollTo(0,0);
+}
+
+function stepper(ex){
+  const box=document.createElement("div");box.className="card";
+  box.innerHTML=`<h3>${ex.t}</h3><p><b>${ex.enun}</b></p>
+  <div class="steps">${ex.passos.map((p,i)=>`<div class="step"><div class="n">Passo ${i+1} de ${ex.passos.length}</div><div>${p[0]}</div><div class="eq">${p[1]}</div></div>`).join("")}</div>
+  <div class="resp" hidden>${ex.resp}</div>
+  <div class="ctrl"><button class="btn next">Mostrar o 1º passo</button><button class="btn ghost reset" hidden>Recomeçar</button></div>`;
+  const steps=[...box.querySelectorAll(".step")],next=box.querySelector(".next"),reset=box.querySelector(".reset"),resp=box.querySelector(".resp");
+  let i=0;
+  next.onclick=()=>{
+    steps[i].classList.add("show");i++;
+    if(i<steps.length){next.textContent=`Mostrar o ${i+1}º passo`}
+    else{next.hidden=true;resp.hidden=false;reset.hidden=false}
+  };
+  reset.onclick=()=>{steps.forEach(s=>s.classList.remove("show"));i=0;resp.hidden=true;reset.hidden=true;next.hidden=false;next.textContent="Mostrar o 1º passo"};
+  return box;
+}
+
+function turma(id){
+  const t=T[id];
+  document.title=`${t.serie} – ${t.disc} – Revisa Aí`;
+  app.setAttribute("data-t",id);
+  app.innerHTML=`
+  <div class="topo"><a href="#">← Todas as turmas</a>
+    <h1>${t.serie}: ${t.disc}</h1></div>
+  ${avisoTurma(t)}
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-p="aula">1. Aula</button>
+    <button class="tab" role="tab" data-p="passo">2. Passo a passo</button>
+    <button class="tab" role="tab" data-p="pratique">3. Pratique</button>
+    <button class="tab" role="tab" data-p="videos">4. Vídeos</button>
+  </div>
+  <section id="painel"></section>
+  ${avisoTurma(t)}
+  ${rodape()}`;
+  const painel=document.getElementById("painel"),tabs=[...app.querySelectorAll(".tab")];
+  const views={
+   aula:()=>{
+     const d=document.createElement("div");d.className="panel";
+     d.innerHTML=`<div class="card big"><h2>${t.sub}</h2><p>${t.abertura}</p></div>
+     <figure class="fig">${SVG[id]}<figcaption>${t.fig}</figcaption></figure>
+     ${t.blocos.map(b=>`<div class="bloco"><h3>${b[0]}</h3><ul>${b[1].map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}
+     ${t.aviso2?`<div class="nota">🔌 ${t.aviso2}</div>`:""}
+     <div class="ctrl"><button class="btn go" data-p="passo">Ir para o passo a passo</button></div>`;
+     return d},
+   passo:()=>{
+     const d=document.createElement("div");d.className="panel";
+     d.innerHTML=`<div class="nota">Toque no botão para ver um passo de cada vez.</div>`;
+     t.exemplos.forEach(e=>d.appendChild(stepper(e)));
+     d.insertAdjacentHTML("beforeend",`<div class="ctrl"><button class="btn go" data-p="pratique">Ir para os exercícios</button></div>`);
+     return d},
+   pratique:()=>{
+     const d=document.createElement("div");d.className="panel";
+     d.innerHTML=`<div class="card big"><h2>Pratique no caderno</h2><p>Faça os exercícios e as soluções no caderno. Tente primeiro; depois toque no olhinho para ver a solução.</p></div>
+     ${t.ex.map((e,i)=>`<div class="card ex"><span class="nivel">${e.n}</span><h3><span class="num">${i+1}</span>Exercício ${i+1}</h3><p class="enun">${e.enun}</p><button class="eye" aria-expanded="false" aria-label="Ver a solução do exercício ${i+1}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button><div class="solbox" hidden><ol>${e.sol.map(s=>`<li>${s}</li>`).join("")}</ol><div class="resp">Resposta: ${e.resp}</div></div></div>`).join("")}
+     <div class="ctrl"><button class="btn go" data-p="videos">Ver os vídeos</button></div>`;
+     return d},
+   videos:()=>{
+     const d=document.createElement("div");d.className="panel";
+     d.innerHTML=`<div class="card big"><h2>Ficou com dúvida?</h2><p>Assista a um vídeo para tirar dúvidas ou aprender mais. O botão abre o YouTube.</p></div>
+     ${t.videos.map(v=>`<a class="vid" href="${yt(v[1])}" target="_blank" rel="noopener">▶ ${v[0]}<span>Buscar no YouTube</span></a>`).join("")}`;d.appendChild(certCard(id));
+     return d}
+  };
+  function show(p){
+    tabs.forEach(b=>b.setAttribute("aria-selected",b.dataset.p===p));
+    painel.replaceChildren(views[p]());
+    painel.querySelectorAll(".eye").forEach(b=>b.onclick=()=>{const box=b.nextElementSibling,abrir=box.hidden;box.hidden=!abrir;b.setAttribute("aria-expanded",abrir)});
+    painel.querySelectorAll(".go").forEach(b=>b.onclick=()=>{show(b.dataset.p);app.querySelector(".tabs").scrollIntoView({behavior:"smooth",block:"start"})});
+  }
+  tabs.forEach(b=>b.onclick=()=>show(b.dataset.p));
+  show("aula");
+  window.scrollTo(0,0);
+}
+
+function rota(){
+  const id=location.hash.replace("#","");
+  if(T[id])turma(id);else home();
+}
+window.addEventListener("hashchange",rota);
+rota();
+
+const pop=document.getElementById("pop");
+pop.hidden=false;
+document.getElementById("pop-ok").onclick=()=>{pop.hidden=true};
+document.getElementById("pop-ok").focus();
+</script>
+</body>
+</html>
